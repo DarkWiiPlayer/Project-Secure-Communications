@@ -3,4 +3,4 @@
 
 void generate_round_key (*char[32] ChipherKey, char[128] ExpandedKey);
 
-#endif // _SHIFTROWS_H
+#endif // _GENERATEROUNDKEY_H
