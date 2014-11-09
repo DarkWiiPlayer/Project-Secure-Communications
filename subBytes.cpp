@@ -23,7 +23,7 @@ char subBytes(char input)
     return s[input];
 }
 
-char *subBytes(char *block)
+void subBytes(char *block)
 {
     char i;
     for (i=0; i<16; i+=1)
@@ -31,4 +31,13 @@ char *subBytes(char *block)
         block[i] = s[block[i]];
     }
     return block;
+}
+
+void subBytes_4(char *row)
+{
+    row[0] = e[row[0]];
+    row[1] = e[row[1]];
+    row[2] = e[row[2]];
+    row[3] = e[row[3]];
+    //Hardcoded because it's faster this way!
 }
