@@ -1,7 +1,7 @@
 
-void shiftRows(uint32_t *block)
+void shiftRows(char *block)
 {
-    uint32_t hlp;
+    char hlp;
 
     hlp = block[4]; block[4] = block[5]; block[5] = block[6]; block[6] = block[7]; block[7] = hlp;
     hlp = block[8]; block[8] = block[10]; block[10] = hlp;
