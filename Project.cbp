@@ -45,9 +45,7 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="shiftRows.cpp" />
 		<Unit filename="shiftRows.h" />
-		<Unit filename="subBytes.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="subBytes.cpp" />
 		<Unit filename="subBytes.h" />
 		<Extensions>
 			<code_completion />
