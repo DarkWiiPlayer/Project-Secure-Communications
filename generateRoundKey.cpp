@@ -16,22 +16,31 @@ uint8_t generate_round_key (*uint8_t[32] ChipherKey, uint8_t[128] ExpandedKey)  
     }
 
 
-    for ( i=0, (i % 16)=0, i++)
+    for ( i=16, i<128, i+=4)
     {
-
+        if (i % 16 = 0)
+        {
+            aktWord[0]=ExpandedKey[i-4];
+            aktWord[1]=ExpandedKey[i-3];
+            aktWord[2]=ExpandedKey[i-2];
+            aktWord[3]=ExpandedKey[i-1];
+            RotWord(*aktWord);
+            //SubByte(*aktWord)
+            ExpandedKey[i]  =ExpandedKey[i-16] ^ aktWord[0] ^ rcon[(i/16)-1];
+            ExpandedKey[i+1]=ExpandedKey[i-15] ^ aktWord[1];
+            ExpandedKey[i+2]=ExpandedKey[i-14] ^ aktWord[2];
+            ExpandedKey[i+3]=ExpandedKey[i-13] ^ aktWord[3];
+        }
+        else
+        {
+            ExpandedKey[i]  =ExpandedKey[i-16] ^ ExpandedKey[i-4];
+            ExpandedKey[i+1]=ExpandedKey[i-15] ^ ExpandedKey[i-3];
+            ExpandedKey[i+2]=ExpandedKey[i-14] ^ ExpandedKey[i-2];
+            ExpandedKey[i+3]=ExpandedKey[i-13] ^ ExpandedKey[i-1];
+        }
     }
 
-    if (i % 16 = 0)
-    {
-        aktWord[0]=ExpandedKey[i-4];
-        aktWord[1]=ExpandedKey[i-3];
-        aktWord[2]=ExpandedKey[i-2];
-        aktWord[3]=ExpandedKey[i-1];
-        RotWord(*aktWord);
-        //SubByte(*aktWord)
-        ExpandedKey[i]=ExpandedKey[i-4] ^ aktWord[0] ^ rcon[(i/16)-1];
 
-    }
 
 }
 
