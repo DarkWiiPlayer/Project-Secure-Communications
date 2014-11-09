@@ -7,6 +7,8 @@
 #include 'generateRoundKey.h
 
 
+void encryptBlock
+
 int main()
 {
     char[16]  ChipherKey;
@@ -23,7 +25,13 @@ void encryptBlock (*char[16] block, *char[16] ChipherKey)
 {
     char[128] RoundKeys;
 
-    generate_round_key(*ChipherKey, *RoundKeys)
+    int i;
+    for (i=0; i<16, i++)
+    {
+        RoundKeys[i]=ChipjerKey[i]
+    }
+
+    generate_round_key(*RoundKeys)
 
     addRoundKey(*block, *RoundKeys[0]);
     int i;
