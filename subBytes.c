@@ -18,7 +18,17 @@ unsigned char s[256] =
    0x8C, 0xA1, 0x89, 0x0D, 0xBF, 0xE6, 0x42, 0x68, 0x41, 0x99, 0x2D, 0x0F, 0xB0, 0x54, 0xBB, 0x16
 };
 
-char subBytes()
+char subBytes(char input)
 {
+    return s[input];
+}
 
+char *subBytes(char *block)
+{
+    char i;
+    for (i=0; i<16; i+=1)
+    {
+        block[i] = s[block[i]];
+    }
+    return block;
 }
