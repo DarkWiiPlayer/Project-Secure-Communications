@@ -3,11 +3,11 @@
 
 
 //ExpandedKey Spaltenweise gespeichert
-uint8_t generate_round_key (*uint8_t[32] ChipherKey, uint8_t[128] ExpandedKey)        //ChiperKey 32bit groﬂes Array
+void generate_round_key (*char[32] ChipherKey, char[128] ExpandedKey)        //ChiperKey 32bit groﬂes Array
 {
     int i,j;
-    uint8_7[4] aktWord;
-    uint8_t rcon[10] = {0x01, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36}
+    char[4] aktWord;
+    char rcon[10] = {0x01, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36}
 
     //filling first 32 bit of ExpandedKey with ChipherKey
     for (i=0, i<32, i++)
@@ -24,8 +24,8 @@ uint8_t generate_round_key (*uint8_t[32] ChipherKey, uint8_t[128] ExpandedKey)  
             aktWord[1]=ExpandedKey[i-3];
             aktWord[2]=ExpandedKey[i-2];
             aktWord[3]=ExpandedKey[i-1];
-            RotWord(*aktWord);
-            //SubByte(*aktWord)
+            RotWord(*aktWord[0]);
+            subByte4(*aktWord[0]);
             ExpandedKey[i]  =ExpandedKey[i-16] ^ aktWord[0] ^ rcon[(i/16)-1];
             ExpandedKey[i+1]=ExpandedKey[i-15] ^ aktWord[1];
             ExpandedKey[i+2]=ExpandedKey[i-14] ^ aktWord[2];
@@ -45,7 +45,7 @@ uint8_t generate_round_key (*uint8_t[32] ChipherKey, uint8_t[128] ExpandedKey)  
 }
 
 
-void RotWord(*uint8_t[4] word)
+void RotWord(*char[4] word)
 {
     uint8_t help;
     help=word[0];
