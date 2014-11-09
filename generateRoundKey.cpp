@@ -1,13 +1,17 @@
 #include ' stdint.h'
 
+void RotWord(*char[4] word);
 
 
 //ExpandedKey Spaltenweise gespeichert
-void generate_round_key (*char[32] ChipherKey, char[128] ExpandedKey)        //ChiperKey 32bit groﬂes Array
+void generate_round_key (*char[32] ChipherKey, *char[128] ExpandedKey)        //ChiperKey 32bit groﬂes Array
 {
     int i,j;
     char[4] aktWord;
-    char rcon[10] = {0x01, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36}
+    char rcon[10] =
+    {
+        0x01, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36
+    };
 
     //filling first 32 bit of ExpandedKey with ChipherKey
     for (i=0, i<32, i++)
